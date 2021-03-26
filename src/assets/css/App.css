@@ -25,6 +25,7 @@
 
 .node {
   padding: 0;
+  cursor: pointer;
 }
 .visited-anim {
   animation: onvisit 0.5s;

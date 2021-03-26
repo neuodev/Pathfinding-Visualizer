@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
     },
     border: 0,
     backgroundColor: theme.palette.background.paper,
-    boxShadow: '0 0.5rem 1rem 0 #1a1f33',
+    boxShadow: '0 0.5rem .1rem 0 #1a1f33',
     display: 'flex',
     justifyContent: 'center',
   },
