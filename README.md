@@ -1,7 +1,7 @@
 ## Pathfinding Visualizer
 
 #Visualize  pathfinding algorithms
- ![Live](https://pfvp.herokuapp.com/).
+ Live: https://pfvp.herokuapp.com/
 
 ## Available Algorithms
 
