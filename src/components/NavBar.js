@@ -180,7 +180,7 @@ function NavBar(props) {
             handleAlgoClick(1);
           }}>
           A*
-          <Collapse in={algo === 1} timeout='auto' unmountOnExit>
+          <Collapse in={true} timeout='auto' unmountOnExit>
             <CardContent>
               <FormLabel>Heuristic</FormLabel>
               <RadioGroup value={heuristic[1]} onChange={handleHeuristicChange}>
