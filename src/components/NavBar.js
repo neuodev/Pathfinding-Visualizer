@@ -159,32 +159,6 @@ function NavBar(props) {
   const drawer = (
     <div>
       <List>
-        <ListItem>
-          <FormControlLabel
-            control={
-              <OrangeSwitch
-                checked={diag}
-                disabled={anim}
-                onChange={() => allowDiag(!diag)}
-                value='allowDiagonals'
-              />
-            }
-            label='Allow Diagonals'
-          />
-        </ListItem>
-        <ListItem>
-          <FormControlLabel
-            control={
-              <OrangeSwitch
-                disabled={anim}
-                checked={animMaze}
-                onChange={() => animateMaze(!animMaze)}
-                value='animateMaze'
-              />
-            }
-            label='Animate Maze'
-          />
-        </ListItem>
         <Divider />
         <Typography variant='h6' className={classes.header}>
           Algorithms
