@@ -25,7 +25,7 @@
 
 .node {
   padding: 0;
-  cursor: pointer;
+  border-radius: 2px;
 }
 .visited-anim {
   animation: onvisit 0.5s;
@@ -50,17 +50,27 @@
 .end-node {
   background-image: linear-gradient(red, red) !important;
   border: 0.1px solid red !important;
+  cursor: pointer;
 }
 .start-node {
   background-image: linear-gradient(green, green) !important;
   border: 0.1px solid green !important;
+  cursor: pointer;
 }
 @keyframes onvisit {
   0% {
     background-color: var(--transition);
+    border-radius: 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-color: var(--transition);
+    border-radius: 50%;
+    transform: scale(1.1);
   }
   100% {
     background-color: var(--visited);
+    transform: scale(1.2);
   }
 }
 .app {
