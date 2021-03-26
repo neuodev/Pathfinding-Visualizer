@@ -11,7 +11,6 @@ import {
   useTheme,
   makeStyles,
 } from '@material-ui/core/styles';
-// import { useTrail, animated } from 'react-spring';
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -33,7 +32,6 @@ const darkTheme = createMuiTheme({
         fontSize: '1rem',
       },
     },
-
   },
   typography: {
     fontFamily: "'Karla', sans-serif",
@@ -72,14 +70,6 @@ const App = () => {
     return 100;
   };
 
-  // const trail = useTrail(4, {
-  //   opacity: 1,
-  //   width: '100%',
-  //   marginRight: theme.spacing(2),
-  //   transform: 'translateY(0px) ',
-  //   from: { opacity: 0, transform: 'translateY(100px) ' },
-  // });
-
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.toolbar} />
@@ -91,12 +81,13 @@ const App = () => {
           clearGrid={() => {
             gridRef.current.clearGrid();
           }}
-          visualizeMaze={animateMaze => {
-            // gridRef.current.visualizeMaze();
-          }}
+          visualizeMaze={animateMaze => {}}
         />
+
         <div className='content'>
-          <Grid ref={gridRef} rows={getRow()} columns={getColumn()} />
+          <div data-aos='fade-up'>
+            <Grid ref={gridRef} rows={getRow()} columns={getColumn()} />
+          </div>
 
           <div className='data'>
             <div className='dataContent'>
@@ -104,8 +95,9 @@ const App = () => {
 
               <ShortestPath rows={getRow()} columns={getColumn()} />
             </div>
-
-            <AlgoInfo />
+            <div data-aos='fade-up'>
+              <AlgoInfo />
+            </div>
           </div>
         </div>
       </div>
