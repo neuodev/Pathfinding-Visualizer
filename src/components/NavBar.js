@@ -127,14 +127,9 @@ function NavBar(props) {
     container,
     algo,
     selectAlgo,
-    diag,
-    allowDiag,
     heuristic,
     changeHeuristic,
-    maze,
     selectMaze,
-    animMaze,
-    animateMaze,
     anim,
   } = props;
   const classes = useStyles();
@@ -160,7 +155,7 @@ function NavBar(props) {
   };
 
   const drawer = (
-    <div>
+    <div data-aos='fade-right'>
       <List>
         <Divider />
         <Typography variant='h6' className={classes.header}>

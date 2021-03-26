@@ -85,9 +85,7 @@ const App = () => {
         />
 
         <div className='content'>
-          <div data-aos='fade-up'>
-            <Grid ref={gridRef} rows={getRow()} columns={getColumn()} />
-          </div>
+          <Grid ref={gridRef} rows={getRow()} columns={getColumn()} />
 
           <div className='data'>
             <div className='dataContent'>
@@ -95,9 +93,8 @@ const App = () => {
 
               <ShortestPath rows={getRow()} columns={getColumn()} />
             </div>
-            <div data-aos='fade-up'>
-              <AlgoInfo />
-            </div>
+
+            <AlgoInfo />
           </div>
         </div>
       </div>

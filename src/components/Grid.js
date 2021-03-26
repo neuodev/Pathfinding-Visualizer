@@ -1,15 +1,15 @@
-import React from "react";
-import Node from "./Node";
-import dijkstra from "../algorithms/dijkstra";
-import astar from "../algorithms/astar";
-import jumpPointSearch from "../algorithms/jumpPointSearch";
-import kruskal from "../mazeGen/kruskall";
-import recursiveDivision from "../mazeGen/recursiveDivison";
-import prim from "../mazeGen/Prim";
-import Card from "@material-ui/core/Card";
-import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import { setAnimating, setVisited, setShortest } from "../actions";
+import React from 'react';
+import Node from './Node';
+import dijkstra from '../algorithms/dijkstra';
+import astar from '../algorithms/astar';
+import jumpPointSearch from '../algorithms/jumpPointSearch';
+import kruskal from '../mazeGen/kruskall';
+import recursiveDivision from '../mazeGen/recursiveDivison';
+import prim from '../mazeGen/Prim';
+import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { setAnimating, setVisited, setShortest } from '../actions';
 
 let startNode = { row: 20, column: 4 };
 let endNode = { row: 20, column: 27 };
@@ -19,36 +19,37 @@ let selectWall = false;
 let selectRemoveWall = false;
 let isAnimated = false;
 
-const startNodeClass = "start-node";
-const endNodeClass = "end-node";
-const wallClass = "wall";
+const startNodeClass = 'start-node';
+const endNodeClass = 'end-node';
+const wallClass = 'wall';
 
 const GridContainer = withStyles({
   root: {
-    width: "100%",
-    padding: "1vw",
-    marginRight: "1vw"
-  }
+    width: '100%',
+    padding: '1vw',
+    marginRight: '1vw',
+  },
 })(Card);
 
 class TGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grid: []
+      grid: [],
     };
     this.nodeRefs = this.getRefs();
     this.gridRef = React.createRef();
   }
   async componentDidMount() {
     await this.setGrid();
-    this.gridRef.current.style.height = `${(this.gridRef.current.offsetWidth /
-      this.props.columns) *
-      this.props.rows}px`;
-    window.addEventListener("resize", e => {
-      this.gridRef.current.style.height = `${(this.gridRef.current.offsetWidth /
-        this.props.columns) *
-        this.props.rows}px`;
+    this.gridRef.current.style.height = `${
+      (this.gridRef.current.offsetWidth / this.props.columns) * this.props.rows
+    }px`;
+    window.addEventListener('resize', e => {
+      this.gridRef.current.style.height = `${
+        (this.gridRef.current.offsetWidth / this.props.columns) *
+        this.props.rows
+      }px`;
     });
   }
 
@@ -61,7 +62,7 @@ class TGrid extends React.Component {
     if (this.state.grid.length === 0) return <div>Loading...</div>;
     return (
       <GridContainer ref={this.gridRef}>
-        <table className="grid">
+        <table data-aos='fade-up' className='grid'>
           <tbody>{this.nodes()}</tbody>
         </table>
       </GridContainer>
@@ -75,7 +76,7 @@ class TGrid extends React.Component {
       for (let j = 0; j < this.props.columns; j++)
         nodeRow.push(
           <Node
-            key={i.toString() + "-" + j.toString()}
+            key={i.toString() + '-' + j.toString()}
             startNodeClass={startNodeClass}
             endNodeClass={endNodeClass}
             wallClass={wallClass}
@@ -128,7 +129,7 @@ class TGrid extends React.Component {
       isEnd: row === endNode.row && col === endNode.column,
       isVisited: false,
       isShortestPath: false,
-      isWall: false
+      isWall: false,
     };
   };
   onMouseClick = async (row, column) => {
@@ -244,15 +245,15 @@ class TGrid extends React.Component {
       row.forEach(node => {
         node.isShortestPath = false;
         node.isVisited = false;
-        this.nodeRefs[node.row][node.col].current.classList.remove("visited");
+        this.nodeRefs[node.row][node.col].current.classList.remove('visited');
         this.nodeRefs[node.row][node.col].current.classList.remove(
-          "shortest-path"
+          'shortest-path'
         );
         this.nodeRefs[node.row][node.col].current.classList.remove(
-          "visited-anim"
+          'visited-anim'
         );
         this.nodeRefs[node.row][node.col].current.classList.remove(
-          "shortest-path-anim"
+          'shortest-path-anim'
         );
       })
     );
@@ -263,7 +264,7 @@ class TGrid extends React.Component {
     this.props.setShortest(0);
     this.setGrid();
   };
-  
+
   visualize = async () => {
     this.props.setAnimating(true);
     let grid = this.state.grid;
@@ -318,7 +319,7 @@ class TGrid extends React.Component {
         return;
       }
       const { row, col } = visitedNodes[i];
-      this.nodeRefs[row][col].current.classList.add("visited-anim");
+      this.nodeRefs[row][col].current.classList.add('visited-anim');
       ++i;
       this.props.setVisited(i);
       requestAnimationFrame(animateVisitedNodes);
@@ -331,7 +332,7 @@ class TGrid extends React.Component {
         return;
       }
       const { row, col } = shortestPath[j];
-      this.nodeRefs[row][col].current.classList.add("shortest-path-anim");
+      this.nodeRefs[row][col].current.classList.add('shortest-path-anim');
       ++j;
       this.props.setShortest(j);
       requestAnimationFrame(animateShortestPath);
@@ -353,10 +354,10 @@ class TGrid extends React.Component {
     shortestPath.shift();
     shortestPath.pop();
     visitedNodes.forEach(node => {
-      this.nodeRefs[node.row][node.col].current.classList.add("visited");
+      this.nodeRefs[node.row][node.col].current.classList.add('visited');
     });
     shortestPath.forEach(node => {
-      this.nodeRefs[node.row][node.col].current.classList.add("shortest-path");
+      this.nodeRefs[node.row][node.col].current.classList.add('shortest-path');
     });
     return { visitedNodes, shortestPath };
   };
@@ -373,7 +374,7 @@ class TGrid extends React.Component {
       const {
         addedWalls,
         removedWalls,
-        animAddedWalls
+        animAddedWalls,
       } = this.getResponseFromMaze(grid);
       this.animateMaze(addedWalls, removedWalls, grid, animAddedWalls);
     }
@@ -441,7 +442,7 @@ const mapStateToProps = state => {
     heuristic: state.heuristic,
     maze: state.maze,
     animMaze: state.animMaze,
-    anim: state.anim
+    anim: state.anim,
   };
 };
 
@@ -450,6 +451,6 @@ export default connect(
   { setAnimating, setVisited, setShortest },
   null,
   {
-    forwardRef: true
+    forwardRef: true,
   }
 )(TGrid);

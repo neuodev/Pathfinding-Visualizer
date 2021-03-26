@@ -48,7 +48,7 @@ const getContent = algo => {
 
 const AlgoInfo = props => {
   return [0, 1, 2].map(item => (
-    <div key={item}>
+    <div data-aos='fade-up' key={item}>
       <AlgoInfoCard>
         <Typography variant='h4'>{getTitle(item)}</Typography>
         <br />
