@@ -15,16 +15,16 @@ import {
 
 const darkTheme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: 'light',
     background: {
-      default: '#151a35', //#151a35
-      paper: '#222b45', //#222b45
+      default: '#1F2937', //#151a35
+      paper: '#374151', //#222b45
     },
     divider: '#151a30',
     action: {
-      hover: '#598bff66',
-      selected: '#3366ff4D',
-      active: '#274bdb',
+      hover: '#4B5563',
+      selected: '#6B7280',
+      active: '#9CA3AF',
     },
   },
   overrides: {
@@ -33,13 +33,7 @@ const darkTheme = createMuiTheme({
         fontSize: '1rem',
       },
     },
-    // MuiCssBaseline: {
-    //   "@global": {
-    //     body: {
-    //       backgroundImage: "linear-gradient(to right,red,r)"
-    //     }
-    //   }
-    // }
+
   },
   typography: {
     fontFamily: "'Karla', sans-serif",

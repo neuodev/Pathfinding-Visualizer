@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
       marginRight: theme.spacing(6),
+      marginTop: '7px',
     },
   },
   drawer: {
@@ -80,6 +81,8 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     backgroundColor: theme.palette.background.paper,
     boxShadow: '0 0.5rem 1rem 0 #1a1f33',
+    display: 'flex',
+    justifyContent: 'center',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -245,7 +248,7 @@ function NavBar(props) {
             </Typography>
             <Button
               className={classes.toolButton}
-              variant='text'
+              variant='outlined'
               disableElevation
               onClick={() => props.visualize()}
               disabled={anim}>
@@ -253,7 +256,7 @@ function NavBar(props) {
             </Button>
             <Button
               className={classes.toolButton}
-              variant='text'
+              variant='outlined'
               disableElevation
               onClick={() => {
                 props.clearGrid();
