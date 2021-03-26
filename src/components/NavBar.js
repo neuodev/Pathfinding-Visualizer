@@ -261,15 +261,6 @@ function NavBar(props) {
               disabled={anim}>
               Clear
             </Button>
-            <Button
-              variant='text'
-              disableElevation
-              onClick={() => {
-                props.visualizeMaze(animateMaze);
-              }}
-              disabled={anim}>
-              Maze
-            </Button>
           </div>
           <IconButton style={{ color: 'white' }} onClick={onGitHubClick}>
             <GitHubIcon style={{ fontSize: '30' }} />
